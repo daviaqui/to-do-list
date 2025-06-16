@@ -67,8 +67,8 @@ li {
   margin-bottom: 10px;
   border-radius: 5px;
   display: flex;
-  justify-content: start;
   align-items: center;
+  justify-content: space-between;
 }
 
 li.completed {
@@ -118,7 +118,21 @@ ul {
   cursor: pointer;
 }
 
+.remove-task {
+  width: 20px;
+  height: 20px;
+  margin-left: auto;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.remove-task:hover {
+  transform: scale(1.1);
+}
+
 input[type="checkbox"]:checked + .task-checkbox {
   text-decoration: line-through;
   color: #888;
 }
+
+

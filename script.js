@@ -13,26 +13,38 @@ btnAddTask.addEventListener('click', function () {
 
     const li = document.createElement('li');
 
-    // Criar o checkbox
+    // Checkbox
     const checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     checkbox.id = `task-${Date.now()}`; // id único, útil se quiser associar label
 
-    // Criar o label para o texto da tarefa
+    // Label
     const label = document.createElement('label');
     label.htmlFor = checkbox.id;
     label.textContent = taskText;
     label.classList.add('task-checkbox');
     const taskCheckbox = document.querySelector('.task-checkbox')
 
-    // Adicionar checkbox e label dentro do li
+    // Ícone de lixeira
+    const trashIcon = document.createElement('img');
+    trashIcon.src = 'imgs/icon-lixo.svg';
+    trashIcon.alt = 'Excluir tarefa';
+    trashIcon.classList.add('remove-task');
+
+    trashIcon.addEventListener('click', function () {
+        li.remove();
+    })
+
+    // Adicionar ao li
     li.appendChild(checkbox);
     li.appendChild(label);
+    li.appendChild(trashIcon);
 
     taskList.appendChild(li);
 
-    taskText = ''; // limpa o campo após adicionar
+    newTask.value = ''; // limpa o campo após adicionar
 
+    // Marcar como concluída
     checkbox.addEventListener('change', function () {
         if (checkbox.checked) {
             console.log('Tarefa marcada como concluída:');
